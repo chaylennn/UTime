@@ -47,7 +47,7 @@ struct Journal: View {
             // allows the user to add a new entry located on the bottom of the view
             .safeAreaInset(edge: .bottom) {
                 VStack(spacing: 12) {
-                    Text("New Journal Entry")
+                    Text("New Entry")
                         .font(.headline)
 
                     TextField("Title", text: $newTitle)

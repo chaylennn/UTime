@@ -6,10 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 struct ToDoPage: View {
+    @State private var showNewTask = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            //This is the to do list title and the + button
+            HStack{
+                Text("To-Do List")
+                    .font(.system(size:40))
+                    .fontWeight(.black)
+                Spacer()
+                Button() {
+                    withAnimation{
+                        showNewTask = true
+                    }
+                } label: { Text("+")
+                        .font(.title)
+                        .fontWeight(.bold)
+                }
+            }
+            .padding()
+            Spacer()
+            
+        }
+        if showNewTask{
+            NewToDo()
+        }
     }
 }
 

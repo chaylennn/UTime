@@ -31,7 +31,8 @@ struct Journal: View {
                     ForEach(entries) { entry in
                         VStack(alignment: .leading, spacing: 4) {
                             Text(entry.title)
-                                .font(.headline)
+                                .font(.title2)
+                                .fontWeight(.semibold)
                             Text(entry.content)
                             Text(entry.date.formatted())
                                 .font(.footnote)

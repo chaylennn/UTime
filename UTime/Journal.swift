@@ -11,22 +11,45 @@ struct Journal: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(entries) { entry in
-                    VStack(alignment: .leading) {
-                        Text(entry.title)
-                            .font(.headline)
-                        Text(entry.content)
-                        Text(entry.date.formatted())
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
+            VStack {
+                // Adding a title and subtitle
+                VStack(alignment: .center, spacing: 4) {
+                    Text("Journal")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .bold()
+
+                    Text("Write down your thoughts and clear your mind ✨")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
-                .onDelete(perform: deleteEntry)
+                .padding(.horizontal)
+                .padding(.top)
+
+                // allows for each saved entry to appear in a list
+                List {
+                    ForEach(entries) { entry in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(entry.title)
+                                .font(.headline)
+                            Text(entry.content)
+                            Text(entry.date.formatted())
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.vertical, 4)
+                    }
+                    .onDelete(perform: deleteEntry)
+                }
+                .listStyle(.plain)
             }
-            .navigationTitle("Journal")
+
+            // allows the user to add a new entry located on the bottom of the view
             .safeAreaInset(edge: .bottom) {
                 VStack(spacing: 12) {
+                    Text("New Journal Entry")
+                        .font(.headline)
+
                     TextField("Title", text: $newTitle)
                         .textFieldStyle(.roundedBorder)
 
@@ -37,7 +60,11 @@ struct Journal: View {
 
                     Button("Save") {
                         withAnimation {
-                            let newEntry = JournalEntry(title: newTitle, content: newContent, date: newDate)
+                            let newEntry = JournalEntry(
+                                title: newTitle,
+                                content: newContent,
+                                date: newDate
+                            )
                             context.insert(newEntry)
                             newTitle = ""
                             newContent = ""
@@ -52,10 +79,11 @@ struct Journal: View {
         }
     }
 
+    // allows user to delete entry
     func deleteEntry(at offsets: IndexSet) {
         for index in offsets {
-            let entry = entries[index]
-            context.delete(entry)
+            let entryToDelete = entries[index]
+            context.delete(entryToDelete)
         }
     }
 }

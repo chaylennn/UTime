@@ -7,12 +7,34 @@
 
 import SwiftUI
 
-struct Timer: View {
+struct TimerView: View {
+    @State private var currentTime = 0
+    
+    // Create a timer that fires every second
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            Text("⏰ Timer:")
+                .font(.headline)
+            Text("\(currentTime) seconds")
+                .font(.largeTitle)
+                .bold()
+            
+            Button("Reset") {
+                currentTime = 0
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        }
+        .onReceive(timer) { _ in
+            currentTime += 1
+        }
     }
 }
 
 #Preview {
-    Timer()
+    TimerView()
 }

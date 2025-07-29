@@ -9,7 +9,14 @@ import SwiftUI
 
 struct Journal: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Journal")
+            .font(.title)
+            .fontWeight(.bold)
+        Text("where you can clear your head and write down your thoughts ✨")
+        Button("New journal entry"){
+            
+        }
+        
     }
 }
 

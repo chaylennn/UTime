@@ -11,6 +11,9 @@ import SwiftData
 
 struct ToDoPage: View {
     @State private var showNewTask = false
+    @Query var toDos: [ToDoItem]
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
         VStack{
             //This is the to do list title and the + button
@@ -31,13 +34,38 @@ struct ToDoPage: View {
             .padding()
             Spacer()
             
+            //add a list for the tasks
+            List{
+                ForEach(toDos){ toDoItem in
+                    if toDoItem.isImportant{
+                        Text("!!" + toDoItem.title)
+                    } else {
+                        Text(toDoItem.title)
+                    }
+                }
+                .onDelete(perform: deleteToDo)
+            }
         }
         if showNewTask{
-            NewToDo()
+            NewToDo(showNewTask: $showNewTask, toDoItem: ToDoItem(title:"", isImportant: false))
+        }
+        
+    }
+    
+    //adding the delete task function
+    
+    func deleteToDo(at offsets: IndexSet){
+        for offset in offsets{
+            let toDoItem = toDos[offset]
+            modelContext.delete(toDoItem)
+            
         }
     }
+    
 }
+
 
 #Preview {
     ToDoPage()
+        .modelContainer(for: ToDoItem.self)
 }

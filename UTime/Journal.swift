@@ -29,12 +29,44 @@ struct Journal: View {
                 // allows for each saved entry to appear in a list
                 List {
                     ForEach(entries) { entry in
+                        
+                        //if both title & content are filled
                         if entry.title != "" && entry.content != "" {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(entry.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 Text(entry.content)
+                                Text(entry.date.formatted())
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.vertical, 4)
+                            
+                        }
+                        
+                        //if title is empty use a cactus for the title
+                        else if entry.title == "" {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("🌵")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Text(entry.content)
+                                Text(entry.date.formatted())
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.vertical, 4)
+                            
+                        }
+                        
+                        //if content is empty
+                        else if entry.content == "" {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(entry.title)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Text("✮")
                                 Text(entry.date.formatted())
                                     .font(.footnote)
                                     .foregroundColor(.gray)

@@ -43,6 +43,7 @@ struct ContentView: View {
                             
                         }
                     }
+                    //text for buttons on top
                     HStack(spacing: 50){
                         Text("Timer")
                         Text("To Do")
@@ -114,11 +115,7 @@ struct ContentView: View {
                                         .clipShape(Circle())
                                 }
                                 
-                                
                             }
-                        
-                            
-
                             
                         }
                     }
@@ -144,12 +141,10 @@ struct ContentView: View {
                         
                     }
                     .padding(.top, 50)
-                
                     
                 }
                     
                 .padding(.bottom, 100)
-            
         }
     }
     //get current date function

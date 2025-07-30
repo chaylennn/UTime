@@ -12,43 +12,6 @@ struct ContentView: View {
     var body: some View {
             NavigationStack{
                 //create the mood board
-                ZStack {
-                    Color(.systemBrown)
-                        .frame(width:350, height: 280)
-                        .cornerRadius(30)
-                    VStack(spacing: 30){
-                        Text("How are you feeling?")
-                        HStack(spacing: 40){
-                            Image("joyous")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .clipShape(Circle())
-                            Image("content")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .clipShape(Circle())
-                            Image("bored")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .clipShape(Circle())
-                            
-                        }
-                        HStack(spacing: 40){
-                            Image("sad")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .clipShape(Circle())
-                            Image("crying")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .clipShape(Circle())
-                        }
-                    }
                     
                 VStack(spacing: 10) {
                     Text(getCurrentDate())
@@ -85,18 +48,60 @@ struct ContentView: View {
                         Text("To Do")
                         Text("Resources")
                     }
-                    .padding(.bottom, 600)
+                    .padding(.bottom, 300)
                     
-                }
-                //create the navigation to journal button
+                    //add the mood board z stack
+                    ZStack {
+                        Color(.systemBrown)
+                            .frame(width:350, height: 280)
+                            .cornerRadius(30)
+                        VStack(spacing: 30){
+                            Text("How are you feeling?")
+                            HStack(spacing: 40){
+                                Image("joyous")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                                Image("content")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                                Image("bored")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                                
+                            }
+                            HStack(spacing: 40){
+                                Image("sad")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                                Image("crying")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                            }
+                        }
+                    }
+                    
                     ZStack(){
                     Color(.systemBrown)
                         .frame(width: 300, height: 100)
                         .cornerRadius(30)
                     }
                 
+                    
+                }
+                //create the navigation to journal button
+                    
                 .padding()
-            }
+            
         }
     }
     //get current date function

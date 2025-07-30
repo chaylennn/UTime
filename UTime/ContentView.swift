@@ -59,35 +59,57 @@ struct ContentView: View {
                             Text("How are you feeling?")
                             //first row of moods
                             HStack(spacing: 40){
-                                Image("joyous")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 70)
-                                    .clipShape(Circle())
-                                Image("content")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 70)
-                                    .clipShape(Circle())
-                                Image("bored")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 70)
-                                    .clipShape(Circle())
+                                Button (action:{
+                                    print("i am happpy")
+                                }) {
+                        
+                                        Image("joyous")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 70, height: 70)
+                                            .clipShape(Circle())
+                                    }
+                                
+                                Button (action:{
+                                    print("i am happpy")
+                                }) {
+                                    Image("content")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 70, height: 70)
+                                        .clipShape(Circle())
+                                }
+                                Button (action:{
+                                    print("i am happpy")
+                                }) {
+                                    Image("bored")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 70, height: 70)
+                                        .clipShape(Circle())
+                                }
                                 
                             }
                             //second row of moods
-                            HStack(spacing: 40){
-                                Image("sad")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 70)
-                                    .clipShape(Circle())
-                                Image("crying")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 70)
-                                    .clipShape(Circle())
+                            Button (action:{
+                                print("i am happpy")
+                            }) {
+                                HStack(spacing: 40){
+                                    Image("sad")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 70, height: 70)
+                                        .clipShape(Circle())
+                                }
+                                Button (action:{
+                                    print("i am happpy")
+                                }) {
+                                    Image("crying")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 70, height: 70)
+                                        .clipShape(Circle())
+                                }
                             }
                         }
                     }

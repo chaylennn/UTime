@@ -16,7 +16,7 @@ struct ContentView: View {
                 VStack(spacing: 10) {
                     Text(getCurrentDate())
                     Text(getCurrentTime())
-                    Spacer()
+                      
                     //create the 3 navigation buttons
                     HStack(spacing: 50) {
                         NavigationLink(destination: CustomTimerView()){
@@ -48,7 +48,7 @@ struct ContentView: View {
                         Text("To Do")
                         Text("Resources")
                     }
-                    .padding(.bottom, 300)
+                    .padding(.bottom, 50)
                     
                     //add the mood board z stack
                     ZStack {
@@ -57,6 +57,7 @@ struct ContentView: View {
                             .cornerRadius(30)
                         VStack(spacing: 30){
                             Text("How are you feeling?")
+                            //first row of moods
                             HStack(spacing: 40){
                                 Image("joyous")
                                     .resizable()
@@ -75,6 +76,7 @@ struct ContentView: View {
                                     .clipShape(Circle())
                                 
                             }
+                            //second row of moods
                             HStack(spacing: 40){
                                 Image("sad")
                                     .resizable()
@@ -90,17 +92,32 @@ struct ContentView: View {
                         }
                     }
                     
+                    //create the navigation to journal button
                     ZStack(){
                     Color(.systemBrown)
-                        .frame(width: 300, height: 100)
+                        .frame(width: 350, height: 100)
                         .cornerRadius(30)
+                        
+                        NavigationLink(destination: Journal()){
+                            HStack(spacing: 50){
+                                Text("Journal")
+                                    .foregroundColor(.black)
+                                    .font(.title)
+                                Image("Journal")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                            }
+                        }
+                        
                     }
+                    .padding(.top, 50)
                 
                     
                 }
-                //create the navigation to journal button
                     
-                .padding()
+                .padding(.bottom, 100)
             
         }
     }

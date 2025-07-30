@@ -5,7 +5,7 @@
 //  Created by maegan on 7/29/25.
 //
 
-//this is for the to do list btw
+//this is for the to do list btw it pops up after u click the + button
 import SwiftUI
 
 struct NewToDo: View {

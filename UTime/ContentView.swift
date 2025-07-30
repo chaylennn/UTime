@@ -91,16 +91,19 @@ struct ContentView: View {
                                 
                             }
                             //second row of moods
-                            Button (action:{
-                                print("i am happpy")
-                            }) {
-                                HStack(spacing: 40){
-                                    Image("sad")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 70, height: 70)
-                                        .clipShape(Circle())
-                                }
+                            
+                            HStack(spacing: 40){
+                                Button (action:{
+                                    print("i am happpy")
+                                }) {
+                        
+                                        Image("sad")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 70, height: 70)
+                                            .clipShape(Circle())
+                                    }
+                                
                                 Button (action:{
                                     print("i am happpy")
                                 }) {
@@ -110,7 +113,13 @@ struct ContentView: View {
                                         .frame(width: 70, height: 70)
                                         .clipShape(Circle())
                                 }
+                                
+                                
                             }
+                        
+                            
+
+                            
                         }
                     }
                     

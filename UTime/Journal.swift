@@ -29,16 +29,20 @@ struct Journal: View {
                 // allows for each saved entry to appear in a list
                 List {
                     ForEach(entries) { entry in
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(entry.title)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                            Text(entry.content)
-                            Text(entry.date.formatted())
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                        if entry.title != "" && entry.content != "" {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(entry.title)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Text(entry.content)
+                                Text(entry.date.formatted())
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.vertical, 4)
+                            
                         }
-                        .padding(.vertical, 4)
+
                     }
                     .onDelete(perform: deleteEntry)
                 }

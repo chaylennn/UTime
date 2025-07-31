@@ -48,10 +48,10 @@ struct ContentView: View {
                         }
                     }
                     //text for buttons on top
-                    HStack(spacing: 50){
-                        Text("Timer")
-                        Text("To Do")
-                        Text("Resources")
+                    HStack(spacing: 65){
+                        Text("         Timer")
+                        Text("  To Do")
+                        Text("Resources    ")
                     }
                     .padding(.bottom, 50)
                     
@@ -62,11 +62,11 @@ struct ContentView: View {
                             .cornerRadius(30)
                         VStack(spacing: 30){
                             Text(moodText)
+                                .font(.title3)
                                 .fontWeight(.semibold)
                             //first row of moods
                             HStack(spacing: 40){
                                 Button (action:{
-                                    print("i am joyous")
                                     moodToday = "joyous"
                                     moodText = "You are feeling joyous!"
                                 }) {
@@ -79,9 +79,8 @@ struct ContentView: View {
                                     }
                                 
                                 Button (action:{
-                                    print("i am content :)")
                                     moodToday = "content"
-                                    moodText = "You are feeling content."
+                                    moodText = "You are feeling content :)"
                                 }) {
                                     Image("content")
                                         .resizable()
@@ -90,7 +89,6 @@ struct ContentView: View {
                                         .clipShape(Circle())
                                 }
                                 Button (action:{
-                                    print("i am bored :/")
                                     moodToday = "bored"
                                     moodText = "You are feeling bored."
                                 }) {
@@ -106,7 +104,6 @@ struct ContentView: View {
                             
                             HStack(spacing: 40){
                                 Button (action:{
-                                    print("i am sad")
                                     moodToday = "sad"
                                     moodText = "You are feeling sad :("
                                 }) {
@@ -119,7 +116,6 @@ struct ContentView: View {
                                     }
                                 
                                 Button (action:{
-                                    print("i am crying")
                                     moodToday = "crying"
                                     moodText = "You feel like crying :'("
                                 }) {
@@ -137,7 +133,7 @@ struct ContentView: View {
                     
                     //create the navigation to journal button
                     ZStack(){
-                        Color(AppColorTheme.creamColor)
+                        Color(AppColorTheme.lightBrownColor)
                         .frame(width: 350, height: 100)
                         .cornerRadius(30)
                         

@@ -15,22 +15,49 @@ struct NewToDo: View {
     
     var body: some View {
         ZStack{
-
-            VStack{
-                Text("Task title:")
-                TextField("Enter task description", text: $toDoItem.title)
-                Toggle(isOn: $toDoItem.isImportant) {
-                    Text("Is it important?")
+            Color(.systemGray6)
+                .ignoresSafeArea()
+        VStack{
+            Spacer()
+            ZStack{
+                Color(AppColorTheme.darkGreenColor)
+                    .ignoresSafeArea(edges: .bottom)
+                VStack{
+                    Text("Task title:")
+                        .fontWeight(.bold)
+                        .foregroundColor(AppColorTheme.creamColor)
+                        .font(.title)
+                    TextField("Enter task description", text: $toDoItem.title)
+                        .padding()
+                        .background(Color(.systemGroupedBackground))
+                        .cornerRadius(15)
+                        .padding(5)
+                        .foregroundColor(AppColorTheme.darkGreenColor)
+                    //toggle
+                    Toggle(isOn: $toDoItem.isImportant) {
+                        Text("Is it important?")
+                    }
+                    .foregroundColor(AppColorTheme.creamColor)
+                    .font(.title2)
+                    //button
+                    .padding()
+                    Button() {
+                        addToDo()
+                        showNewTask = false
+                    } label: { Text("Save")
+                    }
+                    .foregroundColor(AppColorTheme.creamColor)
+                    .font(.title2)
+                    
                 }
-                Button() {
-                    addToDo()
-                    showNewTask = false
-                } label: { Text("Save")
-                }
-                
+                .padding(25)
             }
-            .padding()
+            .frame(maxWidth:.infinity)
+            .frame(height: 300)
         }
+    }
+        
+        
         
     }
     func addToDo(){

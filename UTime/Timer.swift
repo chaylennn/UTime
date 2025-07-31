@@ -1,10 +1,3 @@
-//
-//  Timer.swift
-//  UTime
-//
-//  Created by Jolin Wang on 7/29/25.
-//
-
 import SwiftUI
 
 enum TimerMode {
@@ -13,12 +6,30 @@ enum TimerMode {
 }
 
 struct CustomTimerView: View {
-    @State private var minutes: Int = 25
-    @State private var seconds: Int = 0
-    @State private var totalTime: Int = 1500  // 25 minutes in seconds
+    @State private var showSettings = false
+
+    @State private var minutes: Int = 25 {
+        didSet {
+            if !isRunning {
+                timeLeft = minutes * 60 + seconds
+            }
+        }
+    }
+    @State private var seconds: Int = 0 {
+        didSet {
+            if !isRunning {
+                timeLeft = minutes * 60 + seconds
+            }
+        }
+    }
+
+    @State private var totalTime: Int = 1500
     @State private var timeLeft: Int = 1500
     @State private var isRunning = false
     @State private var mode: TimerMode = .pomodoro
+
+    @State private var studyMinutes: Int = 25
+    @State private var breakMinutes: Int = 5
 
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -27,6 +38,18 @@ struct CustomTimerView: View {
             Color.appCream.ignoresSafeArea()
 
             VStack(spacing: 20) {
+                HStack {
+                    Spacer()
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .font(.title2)
+                            .padding()
+                            .foregroundColor(.gray)
+                    }
+                }
+
                 Image("cute animal plant")
                     .resizable()
                     .frame(width: 150, height: 100)
@@ -36,12 +59,11 @@ struct CustomTimerView: View {
                     .font(.title2)
                     .bold()
 
-                // Display current mode
-                Text(mode == .pomodoro ? "🌿Study Time" : "🌿 Break Time")
+                Text(mode == .pomodoro ? "🍅 Study Time" : "🌿 Break Time")
                     .foregroundColor(.gray)
                     .italic()
 
-                // Time pickers (disabled while running)
+                // Time picker
                 HStack {
                     Stepper("Minutes: \(minutes)", value: $minutes, in: 0...59)
                         .disabled(isRunning)
@@ -50,63 +72,58 @@ struct CustomTimerView: View {
                 }
                 .padding()
 
-                // MM:SS Display
+                // Time display
                 Text(formatTime(timeLeft))
                     .font(.largeTitle)
                     .monospacedDigit()
                     .foregroundColor(timeLeft > 0 ? .primary : .red)
 
-                // Buttons
-                VStack(spacing: 10) {
-                    HStack(spacing: 20) {
-                        Button("Start Focus") {
-                            mode = .pomodoro
-                            isRunning = false
-                            minutes = 25
-                            seconds = 0
-                            totalTime = 25 * 60
-                            timeLeft = totalTime
-                            isRunning = true
-                        }
-                        .frame(width: 140)
-
-                        Button("Start Break") {
-                            mode = .breakTime
-                            isRunning = false
-                            minutes = 5
-                            seconds = 0
-                            totalTime = 5 * 60
-                            timeLeft = totalTime
-                            isRunning = true
-                        }
-                        .frame(width: 120)
+                // Focus/Break Buttons
+                HStack(spacing: 20) {
+                    Button("Start Focus") {
+                        mode = .pomodoro
+                        isRunning = false
+                        minutes = studyMinutes
+                        seconds = 0
+                        totalTime = minutes * 60
+                        timeLeft = totalTime
+                        isRunning = true
                     }
 
-                    HStack(spacing: 60) {
-                        Button("Start") {
-                            totalTime = minutes * 60 + seconds
-                            timeLeft = totalTime
-                            isRunning = true
-                        }
-                        .frame(width: 80)
-                        .disabled(isRunning)
-
-                        Button("Reset") {
-                            isRunning = false
-                            switch mode {
-                            case .pomodoro:
-                                minutes = 25
-                                seconds = 0
-                            case .breakTime:
-                                minutes = 5
-                                seconds = 0
-                            }
-                            timeLeft = minutes * 60 + seconds
-                        }
-                        .frame(width: 80)
+                    Button("Start Break") {
+                        mode = .breakTime
+                        isRunning = false
+                        minutes = breakMinutes
+                        seconds = 0
+                        totalTime = minutes * 60
+                        timeLeft = totalTime
+                        isRunning = true
                     }
                 }
-                .padding()
+                .padding(.top, 10)
+
+                // Start/Reset Buttons
+                HStack(spacing: 20) {
+                    Button("Start") {
+                        totalTime = minutes * 60 + seconds
+                        timeLeft = totalTime
+                        isRunning = true
+                    }
+                    .disabled(isRunning)
+
+                    Button("Reset") {
+                        isRunning = false
+                        switch mode {
+                        case .pomodoro:
+                            minutes = studyMinutes
+                        case .breakTime:
+                            minutes = breakMinutes
+                        }
+                        seconds = 0
+                        timeLeft = minutes * 60
+                    }
+                }
+                .padding(.bottom)
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
             }
@@ -119,6 +136,9 @@ struct CustomTimerView: View {
             } else {
                 isRunning = false
             }
+        }
+        .sheet(isPresented: $showSettings) {
+            SettingsView(studyMinutes: $studyMinutes, breakMinutes: $breakMinutes)
         }
     }
 

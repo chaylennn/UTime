@@ -6,13 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		72C276642E3C168A007B810B /* SwiftUI+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C276632E3C168A007B810B /* SwiftUI+Font.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		72C276632E3C168A007B810B /* SwiftUI+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Font.swift"; sourceTree = "<group>"; };
 		BD5CD8802E39475400B05553 /* UTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		72C276622E3C15C8007B810B /* Exceptions for "UTime" folder in "UTime" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BD5CD87F2E39475300B05553 /* UTime */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BD5CD8822E39475400B05553 /* UTime */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				72C276622E3C15C8007B810B /* Exceptions for "UTime" folder in "UTime" target */,
+			);
+			explicitFolders = (
+				Assets,
+			);
 			path = UTime;
 			sourceTree = "<group>";
 		};
@@ -32,6 +53,7 @@
 		BD5CD8772E39475300B05553 = {
 			isa = PBXGroup;
 			children = (
+				72C276632E3C168A007B810B /* SwiftUI+Font.swift */,
 				BD5CD8822E39475400B05553 /* UTime */,
 				BD5CD8812E39475400B05553 /* Products */,
 			);
@@ -119,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C276642E3C168A007B810B /* SwiftUI+Font.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +276,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UTime/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,6 +304,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UTime/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -53,7 +53,9 @@ struct ContentView: View {
                         Text("To Do")
                         Text("Resources")
                     }
+                    .font(.quicksand())
                     .padding(.bottom, 50)
+                    
                     
                     //add the mood board z stack
                     ZStack {

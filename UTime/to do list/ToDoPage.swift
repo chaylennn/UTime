@@ -21,7 +21,7 @@ struct ToDoPage: View {
             VStack{
                 //This is the to do list title and the + button
                 HStack{
-                    Text("To-Do List")
+                    Text("To-Do List 📋")
                         .font(.system(size:40))
                         .foregroundColor(AppColorTheme.creamColor)
                     Spacer()
@@ -42,7 +42,7 @@ struct ToDoPage: View {
                 List{
                     ForEach(toDos){ toDoItem in
                         if toDoItem.isImportant{
-                            Text("!!" + toDoItem.title)
+                            Text("!! " + toDoItem.title)
                         } else {
                             Text(toDoItem.title)
                         }

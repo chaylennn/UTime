@@ -15,35 +15,47 @@ struct NewToDo: View {
     
     var body: some View {
         ZStack{
-            Color(AppColorTheme.darkGreenColor)
+            Color(.systemGray6)
                 .ignoresSafeArea()
-            VStack{
-                Text("Task title:")
-                    .fontWeight(.bold)
+        VStack{
+            Spacer()
+            ZStack{
+                Color(AppColorTheme.darkGreenColor)
+                    .ignoresSafeArea(edges: .bottom)
+                VStack{
+                    Text("Task title:")
+                        .fontWeight(.bold)
+                        .foregroundColor(AppColorTheme.creamColor)
+                        .font(.title)
+                    TextField("Enter task description", text: $toDoItem.title)
+                        .padding()
+                        .background(Color(.systemGroupedBackground))
+                        .cornerRadius(15)
+                        .padding(5)
+                        .foregroundColor(AppColorTheme.darkGreenColor)
+                    //toggle
+                    Toggle(isOn: $toDoItem.isImportant) {
+                        Text("Is it important?")
+                    }
                     .foregroundColor(AppColorTheme.creamColor)
-                TextField("Enter task description", text: $toDoItem.title)
+                    .font(.title2)
+                    //button
                     .padding()
-                    .background(Color(.systemGroupedBackground))
-                    .cornerRadius(15)
-                    .padding()
-                    .foregroundColor(AppColorTheme.darkGreenColor)
-                //toggle
-                Toggle(isOn: $toDoItem.isImportant) {
-                    Text("Is it important?")
+                    Button() {
+                        addToDo()
+                        showNewTask = false
+                    } label: { Text("Save")
+                    }
+                    .foregroundColor(AppColorTheme.creamColor)
+                    .font(.title2)
+                    
                 }
-                .foregroundColor(AppColorTheme.creamColor)
-                //button
-                .padding()
-                Button() {
-                    addToDo()
-                    showNewTask = false
-                } label: { Text("Save")
-                }
-                .foregroundColor(AppColorTheme.creamColor)
-                
+                .padding(25)
             }
-            .padding(25)
+            .frame(maxWidth:.infinity)
+            .frame(height: 300)
         }
+    }
         
         
         

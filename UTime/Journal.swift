@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+
 struct Journal: View {
     @Query(sort: \JournalEntry.date, order: .reverse) private var entries: [JournalEntry]
     @Environment(\.modelContext) private var context
@@ -101,7 +102,8 @@ struct Journal: View {
                         .textFieldStyle(.roundedBorder)
 
                     DatePicker("Date", selection: $newDate, displayedComponents: .date)
-
+                    
+                    //when hitting the save button
                     Button("Save") {
                         withAnimation {
                             let newEntry = JournalEntry(

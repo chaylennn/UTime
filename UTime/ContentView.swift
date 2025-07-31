@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//global variable so that all files can access what mood the user is feeling after hitting one of the mood buttons
+var moodToday = ""
+
 struct ContentView: View {
     let date = Date()
     var body: some View {
@@ -61,7 +64,8 @@ struct ContentView: View {
                             //first row of moods
                             HStack(spacing: 40){
                                 Button (action:{
-                                    print("i am happpy")
+                                    print("i am joyous")
+                                    moodToday = "joyous"
                                 }) {
                         
                                         Image("joyous")
@@ -72,7 +76,8 @@ struct ContentView: View {
                                     }
                                 
                                 Button (action:{
-                                    print("i am happpy")
+                                    print("i am content")
+                                    moodToday = "content"
                                 }) {
                                     Image("content")
                                         .resizable()
@@ -81,7 +86,8 @@ struct ContentView: View {
                                         .clipShape(Circle())
                                 }
                                 Button (action:{
-                                    print("i am happpy")
+                                    print("i am bored")
+                                    moodToday = "bored"
                                 }) {
                                     Image("bored")
                                         .resizable()
@@ -95,7 +101,8 @@ struct ContentView: View {
                             
                             HStack(spacing: 40){
                                 Button (action:{
-                                    print("i am happpy")
+                                    print("i am sad")
+                                    moodToday = "sad"
                                 }) {
                         
                                         Image("sad")
@@ -106,7 +113,8 @@ struct ContentView: View {
                                     }
                                 
                                 Button (action:{
-                                    print("i am happpy")
+                                    print("i am crying")
+                                    moodToday = "crying"
                                 }) {
                                     Image("crying")
                                         .resizable()

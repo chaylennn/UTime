@@ -16,9 +16,13 @@ struct Journal: View {
     @State private var newTitle: String = ""
     @State private var newContent: String = ""
     @State private var newDate: Date = .now
+    @State private var newMood: String = moodToday
     
     //dictionary of messages and affirmations according to the mood they are feeling
     private var moodMsg = ["joyous": "Yay! Write your happy thoughts down!", "content": "Write about your day!", "bored": "Maybe journaling will help you feel more excited!", "sad": "Want to talk about it? Enter in your feelings here, you got this!", "crying": "Write down your thoughts and clear your mind ✨"]
+    
+    //dictionary of emojis to go along with each mood
+    private var moodEmoji = ["joyous": "😊", "content": "😌", "bored": "🥱", "sad": "😞", "crying": "😿"]
     
 
     var body: some View {
@@ -74,9 +78,18 @@ struct Journal: View {
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 Text(entry.content)
+                                
+                                //adds mood if the value exists and is not empty and then displays if the respective emoji
+                                if entry.mood != nil && entry.mood != ""{
+                                    Text(moodEmoji[entry.mood ?? ""] ?? "")
+                                }
+                                
                                 Text(entry.date.formatted())
                                     .font(.footnote)
                                     .foregroundColor(.gray)
+                                
+
+
                                 
                             }
                             .padding(.vertical, 4)
@@ -90,9 +103,17 @@ struct Journal: View {
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 Text(entry.content)
+                                
+                                //adds mood if the value exists and is not empty and then displays if the respective emoji
+                                if entry.mood != nil && entry.mood != ""{
+                                    Text(moodEmoji[entry.mood ?? ""] ?? "")
+                                }
+                                
+                                
                                 Text(entry.date.formatted())
                                     .font(.footnote)
                                     .foregroundColor(.gray)
+
                             }
                             .padding(.vertical, 4)
                             
@@ -105,9 +126,15 @@ struct Journal: View {
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 Text("✮")
+                                
+                                //adds mood if the value exists and is not empty and then displays if the respective emoji
+                                if entry.mood != nil && entry.mood != ""{
+                                    Text(moodEmoji[entry.mood ?? ""] ?? "")
+                                }
+                                
                                 Text(entry.date.formatted())
                                     .font(.footnote)
-                                    .foregroundColor(.gray)
+
                             }
                             .padding(.vertical, 4)
                             
@@ -139,13 +166,15 @@ struct Journal: View {
                             let newEntry = JournalEntry(
                                 title: newTitle,
                                 content: newContent,
-                                date: newDate
+                                date: newDate,
+                                mood: newMood
                             )
                             context.insert(newEntry)
 
                             newTitle = ""
                             newContent = ""
                             newDate = .now
+                            newMood = ""
                         }
                     }
                     .buttonStyle(.borderedProminent)

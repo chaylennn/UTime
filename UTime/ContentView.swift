@@ -133,7 +133,7 @@ struct ContentView: View {
                     
                     //create the navigation to journal button
                     ZStack(){
-                        Color(AppColorTheme.creamColor)
+                        Color(AppColorTheme.lightBrownColor)
                         .frame(width: 350, height: 100)
                         .cornerRadius(30)
                         

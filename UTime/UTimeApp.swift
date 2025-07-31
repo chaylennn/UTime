@@ -11,7 +11,12 @@ import SwiftUI
 struct UTimeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                ContentView()
+            }
+                .modelContainer(for: [ToDoItem.self, JournalEntry.self])
+                
         }
+    
     }
 }

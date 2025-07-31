@@ -15,22 +15,37 @@ struct NewToDo: View {
     
     var body: some View {
         ZStack{
-
+            Color(AppColorTheme.darkGreenColor)
+                .ignoresSafeArea()
             VStack{
                 Text("Task title:")
+                    .fontWeight(.bold)
+                    .foregroundColor(AppColorTheme.creamColor)
                 TextField("Enter task description", text: $toDoItem.title)
+                    .padding()
+                    .background(Color(.systemGroupedBackground))
+                    .cornerRadius(15)
+                    .padding()
+                    .foregroundColor(AppColorTheme.darkGreenColor)
+                //toggle
                 Toggle(isOn: $toDoItem.isImportant) {
                     Text("Is it important?")
                 }
+                .foregroundColor(AppColorTheme.creamColor)
+                //button
+                .padding()
                 Button() {
                     addToDo()
                     showNewTask = false
                 } label: { Text("Save")
                 }
+                .foregroundColor(AppColorTheme.creamColor)
                 
             }
-            .padding()
+            .padding(25)
         }
+        
+        
         
     }
     func addToDo(){

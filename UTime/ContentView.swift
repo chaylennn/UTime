@@ -57,7 +57,7 @@ struct ContentView: View {
                     
                     //add the mood board z stack
                     ZStack {
-                        Color(.systemBrown)
+                        Color(AppColorTheme.creamColor)
                             .frame(width:350, height: 280)
                             .cornerRadius(30)
                         VStack(spacing: 30){
@@ -137,7 +137,7 @@ struct ContentView: View {
                     
                     //create the navigation to journal button
                     ZStack(){
-                    Color(.systemBrown)
+                        Color(AppColorTheme.creamColor)
                         .frame(width: 350, height: 100)
                         .cornerRadius(30)
                         
@@ -160,7 +160,11 @@ struct ContentView: View {
                 }
                     
                 .padding(.bottom, 100)
+                
         }
+
+        
+        
     }
     //get current date function
     func getCurrentDate() -> String {

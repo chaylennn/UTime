@@ -81,7 +81,7 @@ struct ContentView: View {
                                 Button (action:{
                                     print("i am content :)")
                                     moodToday = "content"
-                                    moodText = "You are feeling content."
+                                    moodText = "You are feeling content :)"
                                 }) {
                                     Image("content")
                                         .resizable()

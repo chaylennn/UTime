@@ -4,6 +4,7 @@
 //
 //  Created by chaylen on 7/29/25.
 //
+//
 
 import SwiftUI
 import SwiftData
@@ -19,7 +20,7 @@ struct Journal: View {
     @State private var newMood: String = moodToday
     
     //dictionary of messages and affirmations according to the mood they are feeling
-    private var moodMsg = ["joyous": "Yay! Write your happy thoughts down!", "content": "Write about your day!", "bored": "Maybe journaling will help you feel more excited!", "sad": "Want to talk about it? Enter in your feelings here, you got this!", "crying": "Write down your thoughts and clear your mind ✨"]
+    private var moodMsg = ["joyous": "Yay! Write your happy thoughts down! 🤗", "content": "Write about your day! 🩷", "bored": "Maybe journaling will help you feel more excited! 😛", "sad": "Want to talk about it? Enter in your feelings here, you got this! 💪", "crying": "Write down your thoughts and clear your mind ✨"]
     
     //dictionary of emojis to go along with each mood
     private var moodEmoji = ["joyous": "😊", "content": "😌", "bored": "🥱", "sad": "😞", "crying": "😿"]

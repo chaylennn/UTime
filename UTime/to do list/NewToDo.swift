@@ -14,21 +14,24 @@ struct NewToDo: View {
     @Environment(\.modelContext) var modelContext
     
     var body: some View {
-        VStack{
-            Text("Task title:")
-            TextField("Enter task description", text: $toDoItem.title)
-                .cornerRadius(15)
-            Toggle(isOn: $toDoItem.isImportant) {
-                Text("Is it important?")
+        ZStack{
+
+            VStack{
+                Text("Task title:")
+                TextField("Enter task description", text: $toDoItem.title)
+                Toggle(isOn: $toDoItem.isImportant) {
+                    Text("Is it important?")
+                }
+                Button() {
+                    addToDo()
+                    showNewTask = false
+                } label: { Text("Save")
+                }
+                
             }
-            Button() {
-                addToDo()
-                showNewTask = false
-            } label: { Text("Save")
-            }
-            
+            .padding()
         }
-        .padding()
+        
     }
     func addToDo(){
         let toDo = ToDoItem(title: toDoItem.title, isImportant: toDoItem.isImportant)

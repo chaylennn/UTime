@@ -4,6 +4,7 @@
 //
 //  Created by chaylen on 7/29/25.
 //
+//
 
 import SwiftUI
 import SwiftData
@@ -19,7 +20,7 @@ struct Journal: View {
     @State private var newMood: String = moodToday
     
     //dictionary of messages and affirmations according to the mood they are feeling
-    private var moodMsg = ["joyous": "Yay! Write your happy thoughts down!", "content": "Write about your day!", "bored": "Maybe journaling will help you feel more excited!", "sad": "Want to talk about it? Enter in your feelings here, you got this!", "crying": "Write down your thoughts and clear your mind ✨"]
+    private var moodMsg = ["joyous": "Yay! Write your happy thoughts down! 🤗", "content": "Write about your day! 🩷", "bored": "Maybe journaling will help you feel more excited! 😛", "sad": "Want to talk about it? Enter in your feelings here, you got this! 💪", "crying": "Write down your thoughts and clear your mind ✨"]
     
     //dictionary of emojis to go along with each mood
     private var moodEmoji = ["joyous": "😊", "content": "😌", "bored": "🥱", "sad": "😞", "crying": "😿"]
@@ -36,28 +37,29 @@ struct Journal: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .bold()
-
                     
-
                     //text shown if user does not input a mood from home
                     if(moodToday == ""){
                         Text("Write down your thoughts to clear your mind ✨")
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                     }
  
-                    
+
                     //only show if the user selected a mood from the home page
                     if(moodToday != ""){
                         Text("Your mood today is: " + moodToday)
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                         
                         //display a msg according to the moodToday from the home page and displays empty if value is null
                         Text(moodMsg[moodToday] ?? "")
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                     }
@@ -77,6 +79,7 @@ struct Journal: View {
                                 Text(entry.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
+                                    
                                 Text(entry.content)
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
@@ -93,6 +96,7 @@ struct Journal: View {
                                 
                             }
                             .padding(.vertical, 4)
+                            .cornerRadius(15)
                             
                         }
                         
@@ -125,6 +129,7 @@ struct Journal: View {
                                 Text(entry.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
+                                    .foregroundColor(Color("dark green"))
                                 Text("✮")
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
@@ -142,9 +147,11 @@ struct Journal: View {
 
                     }
                     .onDelete(perform: deleteEntry)
+                    .listRowBackground(AppColorTheme.lightGreenColor)
                 }
                 .listStyle(.plain)
             }
+            .background(AppColorTheme.lightGreenColor)
 
             // allows the user to add a new entry located on the bottom of the view
             .safeAreaInset(edge: .bottom) {
@@ -178,11 +185,15 @@ struct Journal: View {
                         }
                     }
                     .buttonStyle(.borderedProminent)
+                    .tint(AppColorTheme.lightBrownColor)
+                    .cornerRadius(20)
+                    
                 }
                 .padding()
                 .background(.bar)
             }
         }
+        
     }
 
     // allows user to delete entry

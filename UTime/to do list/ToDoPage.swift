@@ -42,13 +42,19 @@ struct ToDoPage: View {
                 List{
                     ForEach(toDos){ toDoItem in
                         if toDoItem.isImportant{
-                            Text("!! " + toDoItem.title)
+                            Text("‼️ " + toDoItem.title)
                         } else {
                             Text(toDoItem.title)
                         }
                     }
                     .onDelete(perform: deleteToDo)
+                    .padding()
+                    .listRowBackground(AppColorTheme.lightGreenColor)
                 }
+                .foregroundColor(AppColorTheme.darkGreenColor)
+                .scrollContentBackground(.hidden)
+                .background(Color(AppColorTheme.creamColor))
+
             }
         }
         if showNewTask{

@@ -15,7 +15,7 @@ struct NewToDo: View {
     
     var body: some View {
         ZStack{
-            Color(.systemGray6)
+            Color(AppColorTheme.creamColor)
                 .ignoresSafeArea()
         VStack{
             Spacer()

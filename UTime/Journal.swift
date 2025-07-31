@@ -37,9 +37,7 @@ struct Journal: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .bold()
-
                     
-
                     //text shown if user does not input a mood from home
                     if(moodToday == ""){
                         Text("Write down your thoughts to clear your mind ✨")
@@ -49,7 +47,6 @@ struct Journal: View {
                             .multilineTextAlignment(.center)
                     }
  
-                    
                     //only show if the user selected a mood from the home page
                     if(moodToday != ""){
                         Text("Your mood today is: " + moodToday)

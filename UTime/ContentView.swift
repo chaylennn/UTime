@@ -62,6 +62,7 @@ struct ContentView: View {
                             .cornerRadius(30)
                         VStack(spacing: 30){
                             Text(moodText)
+                                .font(.title3)
                                 .fontWeight(.semibold)
                             //first row of moods
                             HStack(spacing: 40){
@@ -132,7 +133,7 @@ struct ContentView: View {
                     
                     //create the navigation to journal button
                     ZStack(){
-                    Color(.systemBrown)
+                        Color(AppColorTheme.creamColor)
                         .frame(width: 350, height: 100)
                         .cornerRadius(30)
                         

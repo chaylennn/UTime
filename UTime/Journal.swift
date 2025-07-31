@@ -47,6 +47,7 @@ struct Journal: View {
                             .multilineTextAlignment(.center)
                     }
  
+
                     //only show if the user selected a mood from the home page
                     if(moodToday != ""){
                         Text("Your mood today is: " + moodToday)

@@ -11,6 +11,7 @@ import SwiftUI
 var moodToday = ""
 
 struct ContentView: View {
+    @State private var moodText = "How are you feeling?"
     let date = Date()
     var body: some View {
             NavigationStack{
@@ -60,12 +61,14 @@ struct ContentView: View {
                             .frame(width:350, height: 280)
                             .cornerRadius(30)
                         VStack(spacing: 30){
-                            Text("How are you feeling?")
+                            Text(moodText)
+                                .fontWeight(.semibold)
                             //first row of moods
                             HStack(spacing: 40){
                                 Button (action:{
                                     print("i am joyous")
                                     moodToday = "joyous"
+                                    moodText = "You are feeling joyous!"
                                 }) {
                         
                                         Image("joyous")
@@ -78,6 +81,7 @@ struct ContentView: View {
                                 Button (action:{
                                     print("i am content")
                                     moodToday = "content"
+                                    moodText = "You are feeling content."
                                 }) {
                                     Image("content")
                                         .resizable()
@@ -88,6 +92,7 @@ struct ContentView: View {
                                 Button (action:{
                                     print("i am bored")
                                     moodToday = "bored"
+                                    moodText = "You are feeling bored."
                                 }) {
                                     Image("bored")
                                         .resizable()
@@ -103,6 +108,7 @@ struct ContentView: View {
                                 Button (action:{
                                     print("i am sad")
                                     moodToday = "sad"
+                                    moodText = "You are feeling sad :("
                                 }) {
                         
                                         Image("sad")
@@ -115,6 +121,7 @@ struct ContentView: View {
                                 Button (action:{
                                     print("i am crying")
                                     moodToday = "crying"
+                                    moodText = "You feel like crying :'("
                                 }) {
                                     Image("crying")
                                         .resizable()

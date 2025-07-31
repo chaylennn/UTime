@@ -44,6 +44,7 @@ struct Journal: View {
                     if(moodToday == ""){
                         Text("Write down your thoughts to clear your mind ✨")
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                     }
@@ -53,12 +54,14 @@ struct Journal: View {
                     if(moodToday != ""){
                         Text("Your mood today is: " + moodToday)
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                         
                         //display a msg according to the moodToday from the home page and displays empty if value is null
                         Text(moodMsg[moodToday] ?? "")
                             .font(.subheadline)
+                            .fontWeight(.semibold)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                     }
@@ -78,6 +81,7 @@ struct Journal: View {
                                 Text(entry.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
+                                    
                                 Text(entry.content)
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
@@ -94,6 +98,7 @@ struct Journal: View {
                                 
                             }
                             .padding(.vertical, 4)
+                            .cornerRadius(15)
                             
                         }
                         
@@ -126,6 +131,7 @@ struct Journal: View {
                                 Text(entry.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
+                                    .foregroundColor(Color("dark green"))
                                 Text("✮")
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
@@ -143,9 +149,11 @@ struct Journal: View {
 
                     }
                     .onDelete(perform: deleteEntry)
+                    .listRowBackground(AppColorTheme.lightGreenColor)
                 }
                 .listStyle(.plain)
             }
+            .background(AppColorTheme.lightGreenColor)
 
             // allows the user to add a new entry located on the bottom of the view
             .safeAreaInset(edge: .bottom) {
@@ -179,11 +187,15 @@ struct Journal: View {
                         }
                     }
                     .buttonStyle(.borderedProminent)
+                    .tint(AppColorTheme.lightBrownColor)
+                    .cornerRadius(20)
+                    
                 }
                 .padding()
                 .background(.bar)
             }
         }
+        
     }
 
     // allows user to delete entry

@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 class JournalEntry: Identifiable {
-    var id = UUID()
     var title: String
     var content: String
     var date: Date

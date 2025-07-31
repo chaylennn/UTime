@@ -16,9 +16,15 @@ struct Journal: View {
     @State private var newTitle: String = ""
     @State private var newContent: String = ""
     @State private var newDate: Date = .now
+    
+    //dictionary of messages and affirmations according to the mood they are feeling
+    private var moodMsg = ["joyous": "Yay! Write your happy thoughts down!", "content": "Write about your day!", "bored": "Maybe journaling will help you feel more excited!", "sad": "Want to talk about it? Enter in your feelings here, you got this!", "crying": "Write down your thoughts and clear your mind ✨"]
+    
 
     var body: some View {
+        
         NavigationStack {
+            
             VStack {
                 // Adding a title and subtitle
                 VStack(alignment: .center, spacing: 4) {
@@ -27,9 +33,32 @@ struct Journal: View {
                         .fontWeight(.bold)
                         .bold()
 
-                    Text("Write down your thoughts and clear your mind ✨")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                    
+
+                    //text shown if user does not input a mood from home
+                    if(moodToday == ""){
+                        Text("Write down your thoughts to clear your mind ✨")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+ 
+                    
+                    //only show if the user selected a mood from the home page
+                    if(moodToday != ""){
+                        Text("Your mood today is: " + moodToday)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        
+                        //display a msg according to the moodToday from the home page and displays empty if value is null
+                        Text(moodMsg[moodToday] ?? "")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                
+                    
                 }
                 .padding(.horizontal)
                 .padding(.top)
@@ -48,13 +77,14 @@ struct Journal: View {
                                 Text(entry.date.formatted())
                                     .font(.footnote)
                                     .foregroundColor(.gray)
+                                
                             }
                             .padding(.vertical, 4)
                             
                         }
                         
                         //if title is empty use a cactus for the title
-                        else if entry.title == "" {
+                        else if entry.title == "" && entry.content != ""{
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("🌵")
                                     .font(.title2)
@@ -69,7 +99,7 @@ struct Journal: View {
                         }
                         
                         //if content is empty
-                        else if entry.content == "" {
+                        else if entry.title != "" && entry.content == "" {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(entry.title)
                                     .font(.title2)
@@ -112,6 +142,7 @@ struct Journal: View {
                                 date: newDate
                             )
                             context.insert(newEntry)
+
                             newTitle = ""
                             newContent = ""
                             newDate = .now

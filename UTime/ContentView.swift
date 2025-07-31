@@ -79,7 +79,7 @@ struct ContentView: View {
                                     }
                                 
                                 Button (action:{
-                                    print("i am content")
+                                    print("i am content :)")
                                     moodToday = "content"
                                     moodText = "You are feeling content."
                                 }) {
@@ -90,7 +90,7 @@ struct ContentView: View {
                                         .clipShape(Circle())
                                 }
                                 Button (action:{
-                                    print("i am bored")
+                                    print("i am bored :/")
                                     moodToday = "bored"
                                     moodText = "You are feeling bored."
                                 }) {

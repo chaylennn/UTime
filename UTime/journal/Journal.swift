@@ -20,10 +20,17 @@ struct Journal: View {
     @State private var newMood: String = moodToday
     
     //dictionary of messages and affirmations according to the mood they are feeling
+
+    private var moodMsg = ["joyous": "Yay! Write your happy thoughts down! 🤗", "content": "Write about your day! 🩷", "bored": "Maybe journaling will help you feel more excited! 😛", "sad": "Want to talk about it? Enter in your feelings here, you got this! 💪", "crying": "Let it all out here — you're safe and supported 💙"]
+    
+    //dictionary of emojis to go along with each mood
+    private var moodEmoji = ["joyous": "☺☀", "content": "♡❤", "bored": "🥱", "sad": "☁☹︎", "crying": "😿"]
+
     private var moodMsg = ["joyous": "Yay! Write your happy thoughts down! 🤗", "content": "Write about your day! 🩷", "bored": "Maybe journaling will help you feel more excited! 😛", "sad": "Want to talk about it? Enter in your feelings here, you got this! 💪", "crying": "Write down your thoughts and clear your mind ✨"]
     
     //dictionary of emojis to go along with each mood
     private var moodEmoji = ["joyous": "😊", "content": "😌", "bored": "🥱", "sad": "😞", "crying": "😿"]
+
     
 
     var body: some View {
@@ -40,6 +47,7 @@ struct Journal: View {
                     
                     //text shown if user does not input a mood from home
                     if(moodToday == ""){
+                        Text("Write down your thoughts to clear your mind ⋆.˚⟡ ࣪ ˖")
                         Text("Write down your thoughts to clear your mind ✨")
                             .font(.subheadline)
                             .fontWeight(.semibold)
@@ -80,7 +88,11 @@ struct Journal: View {
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                     
+
+                                Text("ᯓ★ " + entry.content)
+
                                 Text(entry.content)
+
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
                                 if entry.mood != nil && entry.mood != ""{
@@ -89,7 +101,11 @@ struct Journal: View {
                                 
                                 Text(entry.date.formatted())
                                     .font(.footnote)
+
+                                    .foregroundColor(.secondary)
+
                                     .foregroundColor(.gray)
+
                                 
 
 
@@ -101,12 +117,22 @@ struct Journal: View {
                         }
                         
                         //if title is empty use a cactus for the title
+
+                        //would delete this and following else if for better efficiency
+                        else if entry.title == "" && entry.content != ""{
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Unititled")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Text("ᯓ★ " + entry.content)
+
                         else if entry.title == "" && entry.content != ""{
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("🌵")
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 Text(entry.content)
+
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
                                 if entry.mood != nil && entry.mood != ""{
@@ -116,6 +142,7 @@ struct Journal: View {
                                 
                                 Text(entry.date.formatted())
                                     .font(.footnote)
+                                    .foregroundColor(.secondary)
                                     .foregroundColor(.gray)
 
                             }
@@ -129,6 +156,8 @@ struct Journal: View {
                                 Text(entry.title)
                                     .font(.title2)
                                     .fontWeight(.semibold)
+                                    
+                                Text("ᯓ★ ")
                                     .foregroundColor(Color("dark green"))
                                 Text("✮")
                                 
@@ -139,6 +168,7 @@ struct Journal: View {
                                 
                                 Text(entry.date.formatted())
                                     .font(.footnote)
+                                    .foregroundColor(.secondary)
 
                             }
                             .padding(.vertical, 4)

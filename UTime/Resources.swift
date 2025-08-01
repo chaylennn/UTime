@@ -128,7 +128,8 @@ struct Resources: View {
                 .padding()
             }
             .navigationTitle("Resources")
-    }
+}
+    
 
     @ViewBuilder
     private func disclosurePanel(title: String,

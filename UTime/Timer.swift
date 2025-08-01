@@ -56,11 +56,12 @@ struct CustomTimerView: View {
                     .clipShape(Circle())
 
                 Text("Focus Timer")
-                    .font(.title2)
+                    .font(.title)
                     .bold()
+                    .foregroundColor(.darkGreen)
 
                 Text(mode == .pomodoro ? "🍅 Study Time" : "🌿 Break Time")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.darkGreen)
                     .italic()
 
                 // Time picker
@@ -89,6 +90,7 @@ struct CustomTimerView: View {
                         timeLeft = totalTime
                         isRunning = true
                     }
+                    .foregroundColor(AppColorTheme.darkGreenColor)
 
                     Button("Start Break") {
                         mode = .breakTime
@@ -99,6 +101,7 @@ struct CustomTimerView: View {
                         timeLeft = totalTime
                         isRunning = true
                     }
+                    .foregroundColor(AppColorTheme.darkGreenColor)
                 }
                 .padding(.top, 10)
 
@@ -125,7 +128,7 @@ struct CustomTimerView: View {
                 }
                 .padding(.bottom)
                 .buttonStyle(.borderedProminent)
-                .tint(.green)
+                .tint(AppColorTheme.lightGreenColor)
             }
             .padding()
         }
@@ -140,6 +143,7 @@ struct CustomTimerView: View {
         .sheet(isPresented: $showSettings) {
             SettingsView(studyMinutes: $studyMinutes, breakMinutes: $breakMinutes)
         }
+        .foregroundColor(.darkGreen)
     }
 
     func formatTime(_ seconds: Int) -> String {

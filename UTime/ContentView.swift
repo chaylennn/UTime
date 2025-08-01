@@ -19,7 +19,11 @@ struct ContentView: View {
                     
                 VStack(spacing: 10) {
                     Text(getCurrentDate())
+                        .font(.title2)
+                        .foregroundColor(AppColorTheme.darkGreenColor)
                     Text(getCurrentTime())
+                        .font(.title3)
+                        .foregroundColor(AppColorTheme.darkGreenColor)
                       
                     //create the 3 navigation buttons
                     HStack(spacing: 50) {
@@ -47,23 +51,25 @@ struct ContentView: View {
                             
                         }
                     }
+                    .padding(.top, 30)
                     //text for buttons on top
                     HStack(spacing: 65){
                         Text("         Timer")
                         Text("  To Do")
-                        Text("Resources    ")
+                        Text("Resources   ")
                     }
                     .padding(.bottom, 50)
                     
                     //add the mood board z stack
                     ZStack {
-                        Color(AppColorTheme.creamColor)
+                        Color(AppColorTheme.lightGreenColor)
                             .frame(width:350, height: 280)
                             .cornerRadius(30)
                         VStack(spacing: 30){
                             Text(moodText)
                                 .font(.title3)
                                 .fontWeight(.semibold)
+                                .foregroundColor(AppColorTheme.darkGreenColor)
                             //first row of moods
                             HStack(spacing: 40){
                                 Button (action:{
@@ -133,15 +139,16 @@ struct ContentView: View {
                     
                     //create the navigation to journal button
                     ZStack(){
-                        Color(AppColorTheme.lightBrownColor)
+                        Color(AppColorTheme.darkGreenColor)
                         .frame(width: 350, height: 100)
                         .cornerRadius(30)
                         
                         NavigationLink(destination: Journal()){
                             HStack(spacing: 50){
                                 Text("Journal")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(AppColorTheme.creamColor)
                                     .font(.title)
+                                    .fontWeight(.bold)
                                 Image("Journal")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -155,7 +162,7 @@ struct ContentView: View {
                     
                 }
                     
-                .padding(.bottom, 100)
+                .padding(.bottom, 30)
                 
         }
 
@@ -166,7 +173,7 @@ struct ContentView: View {
     func getCurrentDate() -> String {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateStyle = .full
+        formatter.dateStyle = .medium
         return formatter.string(from:date)
     }
     

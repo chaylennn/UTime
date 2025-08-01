@@ -41,7 +41,7 @@ struct Journal: View {
                     //text shown if user does not input a mood from home
                     if(moodToday == ""){
                         Text("Write down your thoughts to clear your mind ⋆.˚⟡ ࣪ ˖")
-                        Text("Write down your thoughts to clear your mind ✨")
+                        
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
@@ -84,7 +84,6 @@ struct Journal: View {
                                 
                                 Text("ᯓ★ " + entry.content)
                                 
-                                Text(entry.content)
                                 
                                 
                                 //adds mood if the value exists and is not empty and then displays if the respective emoji
@@ -182,7 +181,7 @@ struct Journal: View {
                                     newTitle = ""
                                     newContent = ""
                                     newDate = .now
-                                    newMood = ""
+                                
                                 }
                             }
                             .buttonStyle(.borderedProminent)
